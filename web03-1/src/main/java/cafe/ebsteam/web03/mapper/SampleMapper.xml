@@ -7,16 +7,16 @@
 	<select id="selectSampleList" resultType="cafe.ebsteam.web03.vo.Sample">
 		<!-- resultType은 <>안의 타입 !-->
 		SELECT 
-			sampleId as sample_id,
-			sampleName as sample_name
+			sample_id as sampleId,
+			sample_name as sampleName
 		FROM sample	
 	</select>
 	
 	<!-- 하나만 출력하는 select문 -->
 	<select id="selectSampleOne" resultType="cafe.ebsteam.web03.vo.Sample">
 		SELECT 
-			sampleId as sample_id,
-			sampleName as sample_name
+			sample_id as sampleId,
+			sample_name as sampleName
 		WHERE sample_id = #{sampeId}
 		FROM sample	
 	</select>
