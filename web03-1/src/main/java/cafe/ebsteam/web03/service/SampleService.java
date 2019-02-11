@@ -13,6 +13,7 @@ public class SampleService {
 	//@와 코드 사이에 주석 달지 않기!
    
 	@Autowired private SampleMapper sampleMapper;
+	private Sample sample;
 	
 	public List<Sample> getSampleList(){
 		
@@ -27,13 +28,11 @@ public class SampleService {
 		
 	}
 	
-	public Sample addSample(Sample sample){
-		sampleMapper.insertSample();
-		
-		sample.setSampleName(sample.getSampleName());
-		
-		return sample; 
-		
+	public int addSample(String sampleName){
+		int result = sampleMapper.insertSample(sampleName);
+		System.out.println(result + " : 입력 결과는?");
+		//return을 받아야하나? 아니요
+		return result;
 	}
 	
 	public int removeSample(Sample sample){
@@ -45,3 +44,16 @@ public class SampleService {
 		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

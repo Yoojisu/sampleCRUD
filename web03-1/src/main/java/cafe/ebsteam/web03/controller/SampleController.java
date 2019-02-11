@@ -16,6 +16,7 @@ import cafe.ebsteam.web03.vo.Sample;
 @Controller
 public class SampleController {
 	@Autowired private SampleService sampleService;
+	@Autowired private Sample sample;
 	//@Autowired private SampleMapper sampleMapper;
 
 	//1.입력 폼
@@ -28,14 +29,16 @@ public class SampleController {
 	
 	//2.입력 액션
 	//post방식으로 mapping한다는 뜻
-	@PostMapping("/addSampleAction")
+	@PostMapping("/addSample")
 	public String addSample(@RequestParam(value="sampleName")String sampleName) {
 		//Spring mvc는 sampleName의 값이 null인데 입력값으로 채우겠다는 뜻
+		
+		sampleService.addSample(sampleName);
+		
 		/*
-		 * addSample()
-		 * 
-		 * Sample result = SampleService
+		 * sample.setSampleName(sampleName); sampleService.addSample(sample);
 		 */
+
 		return "redirect:/sampleList";
 		//redirect로 시작하지 않으면 view로 포워딩 하게 되어있음.
 		
@@ -52,7 +55,20 @@ public class SampleController {
 	
 	
 	//4.삭제 액션
-	//@PostMapping
+	@PostMapping("/sampleDelete")
+	public String removeSample(Sample sample) {
+		
+		//?로 값을 넘기면?..
+		sampleService.removeSample(sample);
+		
+		
+		
+		//경로를 sampleList로 다시 요청하기 위해..!
+		return "redirect:/sampleList";
+	}
+	
+	
+	
 	
 	
 	//5.수정 폼
