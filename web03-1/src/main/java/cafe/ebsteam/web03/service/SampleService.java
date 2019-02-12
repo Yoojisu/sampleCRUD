@@ -23,8 +23,13 @@ public class SampleService {
 		//인터페이스에 작성해서 리턴값 받기
 	}
 	
-	public Sample getSampleOne(){
-		 return null;
+	public List<Sample> getSampleOne(int sampleId){
+		
+		List<Sample> list = sampleMapper.selectSampleOne(sampleId);
+	
+	
+		
+		return list;
 		
 	}
 	
@@ -35,12 +40,17 @@ public class SampleService {
 		return result;
 	}
 	
-	public int removeSample(Sample sample){
-		return 0;
+	public int removeSample(int sampleId){
+		int result = sampleMapper.deleteSample(sampleId);
+		System.out.println(result + " : 입력 결과는?");
+		//return을 받아야하나? 아니요
+		return result;
 		
 	}
-	public int modifiySample(Sample sample){
-		return 0;
+	public int modifiySample(int sampleId,String sampleName){
+		int result = sampleMapper.updateSample(sampleId,sampleName);
+		System.out.println(result + " : 입력 결과는?");
+		return result;
 		
 	}
 }

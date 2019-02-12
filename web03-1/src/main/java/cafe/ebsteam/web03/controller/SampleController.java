@@ -55,11 +55,11 @@ public class SampleController {
 	
 	
 	//4.삭제 액션
-	@PostMapping("/sampleDelete")
-	public String removeSample(Sample sample) {
+	@GetMapping("/removeSample")
+	public String removeSample(@RequestParam(value="sampleId")int sampleId) {
 		
 		//?로 값을 넘기면?..
-		sampleService.removeSample(sample);
+		sampleService.removeSample(sampleId);
 		
 		
 		
@@ -69,11 +69,33 @@ public class SampleController {
 	
 	
 	
-	
-	
 	//5.수정 폼
 	
+	@GetMapping("/modifiySample")
+	public String getSampleOne(Model model, @RequestParam(value="sampleId")int sampleId) {
+		
+		List<Sample> list = sampleService.getSampleOne(sampleId);
+		model.addAttribute("list_one", list);
+		
+		
+		//sampleService.getSampleOne(sampleId);
+		
+		
+		return "modifiySample";
+		
+	}
+	
 	//6.수정 액션
+	@PostMapping("/modifiySample")
+	public String modifiySample(@RequestParam(value="sampleName")String sampleName,@RequestParam(value="sampleId")int sampleId) {
+			
+		sampleService.modifiySample(sampleId,sampleName);
+		
+		
+		return "redirect:/sampleList";
+		
+	}
+	
 	
 	
 }

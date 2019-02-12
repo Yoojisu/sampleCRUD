@@ -16,9 +16,9 @@
 	<select id="selectSampleOne" resultType="cafe.ebsteam.web03.vo.Sample">
 		SELECT 
 			sample_id as sampleId,
-			sample_name as sampleName
-		WHERE sample_id = #{sampeId}
+			sample_name as sampleName		
 		FROM sample	
+		WHERE sample_id = #{sampeId}
 	</select>
 	
 	<!--insert는 int타입이 기본 값이므로  list가 필요없음 resultType대신 parameterType사용-->
