@@ -9,11 +9,10 @@ import cafe.ebsteam.web03.vo.Sample;
 @Mapper
 public interface SampleMapper {
 	
+	//추상메서드들..!
 	List<Sample> selectSampleList();
 	List<Sample> selectSampleOne(int sampleId);
 	int insertSample(String sampleName);
 	int deleteSample(int sampleId);
-	int updateSample(int sampleId, String sampleName);
-	
-	
+	int updateSample(int sampleId, String sampleName);	
 }

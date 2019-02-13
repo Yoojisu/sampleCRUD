@@ -18,39 +18,51 @@ public class SampleService {
 	public List<Sample> getSampleList(){
 		
 		List<Sample> list = sampleMapper.selectSampleList();
+		//sampleMapper내의 selectSampleList메서드를 호출하여 list로 받겠다.
+		
 		return list; 
+		//list의 값을 리턴값으로 저장한다
 	
-		//인터페이스에 작성해서 리턴값 받기
 	}
 	
 	public List<Sample> getSampleOne(int sampleId){
 		
 		List<Sample> list = sampleMapper.selectSampleOne(sampleId);
-	
-	
+		//sampleMapper내의 selectSampleOne메서드에 매개변수 sampleId를 입력한 후 호출하여 list로 받겠다.
 		
-		return list;
-		
+		return list;	
+		//list의 값을 리턴값으로 저장한다
 	}
 	
 	public int addSample(String sampleName){
+		
 		int result = sampleMapper.insertSample(sampleName);
+		//sampleMapper내의 insertSample메서드에 매개변수 sampleName를 입력한 후 호출하여 int형으로 받겠다.
+		
 		System.out.println(result + " : 입력 결과는?");
-		//return을 받아야하나? 아니요
+		
 		return result;
+		//return을 실행 결과로 받아 실행 결과 값이 1이면 성공! 
 	}
 	
 	public int removeSample(int sampleId){
 		int result = sampleMapper.deleteSample(sampleId);
+		//sampleMapper내의 deleteSample메서드에 매개변수 sampleId를 입력한 후 호출하여 int형으로 받겠다.
+		
 		System.out.println(result + " : 입력 결과는?");
-		//return을 받아야하나? 아니요
+		
 		return result;
+		//return을 실행 결과로 받아 실행 결과 값이 1이면 성공! 
 		
 	}
 	public int modifiySample(int sampleId,String sampleName){
 		int result = sampleMapper.updateSample(sampleId,sampleName);
+		//sampleMapper내의 updateSample메서드에 매개변수 sampleId, sampleName을 입력한 후 호출하여 int형으로 받겠다.
+		
 		System.out.println(result + " : 입력 결과는?");
+		
 		return result;
+		//return을 실행 결과로 받아 실행 결과 값이 1이면 성공! 
 		
 	}
 }

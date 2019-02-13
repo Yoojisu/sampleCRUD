@@ -10,28 +10,33 @@
 			sample_id as sampleId,
 			sample_name as sampleName
 		FROM sample	
+		<!-- db내의 전체 정보를 출력하는 쿼리-->
+		
 	</select>
 	
-	<!-- 하나만 출력하는 select문 -->
 	<select id="selectSampleOne" resultType="cafe.ebsteam.web03.vo.Sample">
 		SELECT 
 			sample_id as sampleId,
 			sample_name as sampleName		
 		FROM sample	
 		WHERE sample_id = #{sampeId}
+		<!--화면에서 입력받은 sampeId에 해당하는 행을 출력하는 쿼리 -->
 	</select>
 	
 	<!--insert는 int타입이 기본 값이므로  list가 필요없음 resultType대신 parameterType사용-->
 	<insert id="insertSample" parameterType="cafe.ebsteam.web03.vo.Sample">
 		INSERT INTO sample(sample_name) VALUES(#{sampleName})
+		<!--화면에서 입력받은 sampleName의 값을  sample_name변수에 저장하는 쿼리 -->
 		
 	</insert>
 	<!--delete도 int타입이 기본값이므로 list 필요없음 resultType대신 parameterType사용 -->
 	<delete id="deleteSample" parameterType="cafe.ebsteam.web03.vo.Sample">
-		DELETE FROM sample WHERE sample_id = #{sampleId} 		
+		DELETE FROM sample WHERE sample_id = #{sampleId} 	
+		<!--화면에서 입력받은 sampleId값에 해당하는 행을 삭제하는 쿼리  -->	
 	</delete>
 	
 	<update id="updateSample" parameterType="cafe.ebsteam.web03.vo.Sample">
 		UPDATE sample SET sample_name = #{sampleName} WHERE sample_id = #{sampleId} 
+		<!--화면에서 입력받은 sampleId값에 해당하는 sampleName의 값을 화면에서 입력한 값으로 바꿔주는 쿼리 -->
 	</update>
 </mapper>
